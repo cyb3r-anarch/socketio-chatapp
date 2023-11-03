@@ -21,6 +21,8 @@ const server = createServer(app);
 //initalize a new Websocket server instance from Server class
 const io = new Server(server);
 
+
+app.use(express.static('public'));
 //define a route that responds to HTTP GET requests at the root URL ('/')
 app.get('/' , (req,res)=>{
   //res.send("<h1>Hello World</h1>"); 
