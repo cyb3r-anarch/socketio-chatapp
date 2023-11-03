@@ -8,8 +8,10 @@
   </head>
   <body>
     <ul id="messages">
-      
+      <!-- display the message interface here  -->
     </ul>
+
+    <!-- chatbox -->
     <form id="form">
 
       <div id="bottom-container">
@@ -22,6 +24,7 @@
     </form> 
     <script src="/socket.io/socket.io.js"></script>
     <script>
+      //create a WebSocket connection from client-side to the server using the 'io' object
       const socket = io();
 
       const form = document.getElementById("form");
