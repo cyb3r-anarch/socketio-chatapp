@@ -42,6 +42,7 @@ io.on('connection', (socket) => {
   //listens for 'chat message' event and executes a callback function
   socket.on('chat message', (msg)=>{
     console.log('message: ' + msg);
+    io.emit('chat message', msg);
   })
 })
 //Start HTTP Server and have it listen at {port}

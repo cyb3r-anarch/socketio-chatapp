@@ -28,7 +28,8 @@
       const socket = io();
 
       const form = document.getElementById("form");
-      const input = document.getElementById("input")
+      const input = document.getElementById("input");
+      const messages = document.getElementById('messages');
 
       //handles what happens when a message is sent
       form.addEventListener('submit', (e)=>{
@@ -40,6 +41,16 @@
           //reset input value
           input.value = '';
         }
+      });
+
+      //handles the chat message event in the client-side
+      socket.on('chat message', (msg)=>{
+        //display the chat message on the page
+        const item = document.createElement('li');
+        item.textContent = msg;
+        messages.appendChild(item);
+        //scrolls the window to the bottom of the page to make the most recent message visible
+        window.scrollTo(0, document.body.scrollHeight);
       });
     </script>
   </body>
