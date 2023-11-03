@@ -21,7 +21,7 @@ const server = createServer(app);
 //initalize a new Websocket server instance from Server class
 const io = new Server(server);
 
-
+//Serve static files such as css from the public directory
 app.use(express.static('public'));
 //define a route that responds to HTTP GET requests at the root URL ('/')
 app.get('/' , (req,res)=>{
@@ -34,6 +34,10 @@ app.get('/' , (req,res)=>{
 //Listens for a Websocket connection and executes a callback function
 io.on('connection', (socket) => {
   console.log("a user has connected");
+  //listens for disconnect event and executes a callback function
+  socket.on('disconnect', ()=>{
+    console.log("a user has disconnected");
+  })
 })
 //Start HTTP Server and have it listen at {port}
 server.listen(port, ()=>{
