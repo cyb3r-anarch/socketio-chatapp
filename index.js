@@ -38,6 +38,11 @@ io.on('connection', (socket) => {
   socket.on('disconnect', ()=>{
     console.log("a user has disconnected");
   })
+
+  //listens for 'chat message' event and executes a callback function
+  socket.on('chat message', (msg)=>{
+    console.log('message: ' + msg);
+  })
 })
 //Start HTTP Server and have it listen at {port}
 server.listen(port, ()=>{

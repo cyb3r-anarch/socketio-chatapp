@@ -10,11 +10,11 @@
     <ul id="messages">
       
     </ul>
-    <form>
+    <form id="form">
 
       <div id="bottom-container">
 
-        <input type="text" name="chatbox" value="">
+        <input id="input" type="text" name="chatbox" value="">
         <input type="submit" value="Send">
 
       </div>
@@ -23,6 +23,21 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
+
+      const form = document.getElementById("form");
+      const input = document.getElementById("input")
+
+      //handles what happens when a message is sent
+      form.addEventListener('submit', (e)=>{
+        //prevent the page from refreshing when a message is sent
+        e.preventDefault();
+        if(input.value) {
+          //sends the message data to the server side using the 'chat message' event name
+          socket.emit('chat message', input.value);
+          //reset input value
+          input.value = '';
+        }
+      });
     </script>
   </body>
 </html>
