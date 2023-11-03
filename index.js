@@ -19,7 +19,10 @@ const server = createServer(app);
 
 //define a route that responds to HTTP GET requests at the root URL ('/')
 app.get('/' , (req,res)=>{
-  res.send("<h1>Hello World</h1>"); 
+  //res.send("<h1>Hello World</h1>"); 
+
+  //sends mentioned file in response to an http reqest to the root url
+  res.sendFile(new URL('./index.html', import.meta.url).pathname)
 });
 
 //Start HTTP Server and have it listen at {port}
